@@ -4,10 +4,11 @@
 
 	```sql
 		CREATE DATABASE biblioteca;
-		/c biblioteca
+		\c biblioteca
 	```
 
 	```
+	\l
 															List of databases
 		Name    |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |     Access privileges     
 	------------+----------+----------+-----------------+-------------+-------------+------------+-----------+---------------------------
@@ -38,6 +39,7 @@
 	```
 
 	```
+	\du
 									List of roles
 	Role name      | Attributes                         
 	---------------+------------------------------------------------------------
@@ -148,6 +150,7 @@
 	
 	Resultados de crear estas tres tablas:
 	```
+	\dt
 	List of relations
 	Schema |   Name    | Type  |  Owner   
 	-------+-----------+-------+----------
@@ -286,7 +289,7 @@
 	SELECT a.nombre, COUNT(l.id_libro) AS cantidad_libros
 	FROM autores a
 	JOIN libros l ON a.id_autor = l.id_autor
-	GROUP BY a.id_autor, a.nombre
+	GROUP BY a.id_autor
 	HAVING COUNT(l.id_libro) > 1;
 	```
 
@@ -409,10 +412,10 @@
 	
 	```sql
 	CREATE OR REPLACE FUNCTION obtener_libros_por_autor(nombre_autor TEXT)
-	RETURNS TABLE(titulo TEXT, ano_publicacion INT) AS $$
+	RETURNS TABLE(titulos TEXT) AS $$
 	BEGIN
 		RETURN QUERY
-		SELECT l.titulo, l.ano_publicacion
+		SELECT l.titulo
 		FROM libros l
 		JOIN autores a ON l.id_autor = a.id_autor
 		WHERE a.nombre = nombre_autor;
@@ -425,10 +428,11 @@
 	```
 
 	```
-	          titulo          | ano_publicacion 
-	--------------------------+-----------------
-	Don Quijote de la Mancha  |            1615
-	Novelas ejemplares        |            1613
+         titulos          
+	--------------------------
+	Don Quijote de la Mancha
+	Novelas ejemplares
+	(2 rows)
 	```
 
 	9.2. Crear una consulta que devuelva los tres libros más prestados.
