@@ -1,0 +1,218 @@
+==========================================================
+  TABLA / VISTA: vivero
+==========================================================
+ id |          nombre          |  latitud  |  longitud  
+----+--------------------------+-----------+------------
+  1 | Vivero Central La Laguna | 28.487100 | -16.315900
+  2 | Vivero del Sur Arona     | 28.100200 | -16.680500
+  3 | Vivero Verde Orotava     | 28.390100 | -16.523300
+  4 | Vivero Costa Adeje       | 28.082500 | -16.732100
+(4 rows)
+
+
+==========================================================
+  TABLA / VISTA: zona
+==========================================================
+ id_vivero | letra_zona |        nombre         | tipo_ambiente | superficie |  latitud  |  longitud  
+-----------+------------+-----------------------+---------------+------------+-----------+------------
+         1 | A          | Invernadero Principal | Cubierto      |     450.00 | 28.487110 | -16.315910
+         1 | B          | Exterior Frutales     | Exterior      |    1200.00 | 28.487120 | -16.315920
+         2 | A          | Sombra Tropical       | Sombra        |     350.00 | 28.100210 | -16.680510
+         3 | A          | Semillero y Flores    | Cubierto      |     500.00 | 28.390110 | -16.523310
+         4 | A          | Cactus y Suculentas   | Exterior      |     800.00 | 28.082510 | -16.732110
+(5 rows)
+
+
+==========================================================
+  TABLA / VISTA: producto
+==========================================================
+ id |                nombre                 | precio |      tipo       
+----+---------------------------------------+--------+-----------------
+  1 | Palmera Canaria (Phoenix canariensis) |  45.50 | Planta Exterior
+  2 | Orquídea Phalaenopsis                 |  18.00 | Planta Interior
+  3 | Sustrato Universal 50L                |   9.95 | Insumo
+  4 | Maceta Cerámica 30cm                  |  14.20 | Accesorio
+  5 | Drago Canario (Dracaena draco)        |  65.00 | Planta Exterior
+(5 rows)
+
+
+==========================================================
+  TABLA / VISTA: zona_producto
+==========================================================
+ id_vivero | letra_zona | id_producto | stock 
+-----------+------------+-------------+-------
+         1 | A          |           2 |    40
+         1 | B          |           1 |    15
+         1 | B          |           5 |    10
+         2 | A          |           3 |   100
+         3 | A          |           4 |    25
+(5 rows)
+
+
+==========================================================
+  TABLA / VISTA: empleado
+==========================================================
+ id | nombre | apellido_1 | apellido_2 |    dni    | fecha_contratacion 
+----+--------+------------+------------+-----------+--------------------
+  1 | Carlos | González   | Pérez      | 12345678A | 2021-01-15
+  2 | María  | Rodríguez  | Hernández  | 87654321B | 2022-03-01
+  3 | Juan   | López      | Martín     | 11223344C | 2020-06-10
+  4 | Elena  | Gómez      | Díaz       | 44332211D | 2023-09-15
+(4 rows)
+
+
+==========================================================
+  TABLA / VISTA: telefono_empleado
+==========================================================
+ id_empleado | telefono  
+-------------+-----------
+           1 | 600111222
+           1 | 922111222
+           2 | 600333444
+           3 | 600555666
+           4 | 600777888
+(5 rows)
+
+
+==========================================================
+  TABLA / VISTA: correo_empleado
+==========================================================
+ id_empleado |           correo           
+-------------+----------------------------
+           1 | carlos.gonzalez@viveros.es
+           2 | maria.rodriguez@viveros.es
+           3 | juan.lopez@viveros.es
+           4 | elena.gomez@viveros.es
+(4 rows)
+
+
+==========================================================
+  TABLA / VISTA: puesto
+==========================================================
+ id |          nombre           
+----+---------------------------
+  1 | Encargado de Vivero
+  2 | Jardinero Especialista
+  3 | Técnico Agrónomo
+  4 | Comercial de Ventas
+  5 | Auxiliar de Mantenimiento
+(5 rows)
+
+
+==========================================================
+  TABLA / VISTA: empleado_puesto
+==========================================================
+ id_empleado | id_puesto | fecha_inicio | fecha_fin  
+-------------+-----------+--------------+------------
+           1 |         1 | 2021-01-15   | 
+           2 |         2 | 2022-03-01   | 2023-02-28
+           2 |         3 | 2023-03-01   | 
+           3 |         2 | 2020-06-10   | 
+           4 |         4 | 2023-09-15   | 
+(5 rows)
+
+
+==========================================================
+  TABLA / VISTA: tarea
+==========================================================
+ id |          nombre          |                descripcion                 |      tipo       
+----+--------------------------+--------------------------------------------+-----------------
+  1 | Riego de Invernadero     | Control de humedad e irrigación programada | Mantenimiento
+  2 | Poda de Frutales         | Recorte de ramas de la zona exterior       | Poda
+  3 | Control de Plagas        | Aplicación de fitosanitarios ecológicos    | Sanidad vegetal
+  4 | Preparación de Sustratos | Mezcla de turba y compost                  | Preparación
+  5 | Atención al Cliente      | Asesoramiento y facturación en tienda      | Comercial
+(5 rows)
+
+
+==========================================================
+  TABLA / VISTA: asignacion
+==========================================================
+ id_empleado | id_tarea | fecha_inicio | fecha_fin  | indice_productividad | id_vivero | letra_zona 
+-------------+----------+--------------+------------+----------------------+-----------+------------
+           1 |        3 | 2024-01-10   | 2024-01-12 |                 9.50 |         1 | A
+           2 |        1 | 2024-02-01   |            |                 8.75 |         1 | A
+           3 |        2 | 2024-02-05   | 2024-02-06 |                 7.80 |         1 | B
+           4 |        5 | 2024-03-01   |            |                 9.10 |         2 | A
+(4 rows)
+
+
+==========================================================
+  TABLA / VISTA: cliente
+==========================================================
+ id | nombre | apellido_1 | apellido_2 | fidelizacion 
+----+--------+------------+------------+--------------
+  2 | Luis   | Fernández  | Torres     | f
+  3 | Carmen | Benítez    | Ramos      | t
+  4 | David  | Castro     | Navarro    | f
+  5 | Sonia  | Mendoza    | Sánchez    | t
+(4 rows)
+
+
+==========================================================
+  TABLA / VISTA: telefono_cliente
+==========================================================
+ id_cliente | telefono  
+------------+-----------
+          2 | 688234567
+          3 | 699345678
+          3 | 922345678
+          4 | 655456789
+(4 rows)
+
+
+==========================================================
+  TABLA / VISTA: correo_cliente
+==========================================================
+ id_cliente |          correo          
+------------+--------------------------
+          2 | luis.ft@hotmail.com
+          3 | carmen.benitez@yahoo.es
+          4 | david.castro@outlook.com
+          5 | sonia.mendoza@gmail.com
+(4 rows)
+
+
+==========================================================
+  TABLA / VISTA: pedido
+==========================================================
+ id |  fecha_realizacion  |  metodo_pago  |  estado   | id_cliente | id_empleado 
+----+---------------------+---------------+-----------+------------+-------------
+  2 | 2024-03-05 12:15:00 | Efectivo      | Entregado |          2 |           4
+  3 | 2024-03-10 16:45:00 | Transferencia | Enviado   |          3 |           4
+  5 | 2024-03-15 09:20:00 | Tarjeta       | Pendiente |          5 |            
+(3 rows)
+
+
+==========================================================
+  TABLA / VISTA: producto_pedido
+==========================================================
+ id_producto | id_pedido | unidades 
+-------------+-----------+----------
+           3 |         2 |        5
+           5 |         3 |        1
+(2 rows)
+
+
+==========================================================
+  TABLA / VISTA: v_pedido_detalle
+==========================================================
+ id_pedido |  fecha_realizacion  |  estado   |  metodo_pago  | id_cliente | id_empleado | importe_total 
+-----------+---------------------+-----------+---------------+------------+-------------+---------------
+         5 | 2024-03-15 09:20:00 | Pendiente | Tarjeta       |          5 |             |             0
+         2 | 2024-03-05 12:15:00 | Entregado | Efectivo      |          2 |           4 |         49.75
+         3 | 2024-03-10 16:45:00 | Enviado   | Transferencia |          3 |           4 |         65.00
+(3 rows)
+
+
+==========================================================
+  TABLA / VISTA: v_cliente_resumen
+==========================================================
+ id_cliente | nombre | apellido_1 | apellido_2 | fidelizacion | pedidos_realizados 
+------------+--------+------------+------------+--------------+--------------------
+          3 | Carmen | Benítez    | Ramos      | t            |                  1
+          5 | Sonia  | Mendoza    | Sánchez    | t            |                  1
+          4 | David  | Castro     | Navarro    | f            |                  0
+          2 | Luis   | Fernández  | Torres     | f            |                  1
+(4 rows)
+
